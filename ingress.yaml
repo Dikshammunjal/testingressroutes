@@ -1,0 +1,21 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-world-ing
+  namespace: rabbitmq-system
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules :
+  - host: rabbitmq.intellectfabric.io
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: rabbitmq-client
+              port:
+                number: 5672
+             
